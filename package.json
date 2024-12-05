@@ -20,7 +20,8 @@
     "react-native-svg": "^15.9.0",
     "react-redux": "^9.1.2",
     "redux": "^5.0.1",
-    "redux-thunk": "^3.1.0"
+    "redux-thunk": "^3.1.0",
+    "victory-native": "^37.0.3-next.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
