@@ -3,11 +3,11 @@ import React from 'react';
 import {MoreCircle} from 'iconsax-react-native';
 import {ThemeColors} from '../../theme/colors';
 
-const TasksStausCard = ({item}) => {
+const TasksStausCard = ({item, value}) => {
   return (
     <View style={[styles.container, {backgroundColor: item.color}]}>
       <View>
-        <Text style={styles.value}>{item.value}</Text>
+        <Text style={styles.value}>{value}</Text>
         <Text style={styles.status}>{item.status}</Text>
       </View>
       <View>

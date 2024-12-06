@@ -1,13 +1,20 @@
-import {StyleSheet, Text, View, ScrollView} from 'react-native';
-import React from 'react';
+import {StyleSheet, View, ScrollView} from 'react-native';
 import {useSelector} from 'react-redux';
 import SectionTitle from '../../components/ui/sectionTitle';
 import TasksStausCard from '../../components/dashboard/tasksStausCard';
 import {defaultScreenStyle} from '../../styles/defaultScreenStyle';
-import {VictoryPie, VictoryChart, VictoryTheme} from 'victory-native';
+import {VictoryPie, VictoryTheme} from 'victory-native';
 
 const Dashboard = () => {
-  const {taskStatus} = useSelector(state => state?.tasks);
+  const {taskStatus, tasks} = useSelector(state => state?.tasks);
+  const countTaskStatus = status => {
+    return tasks.filter(item => item?.status === status.length);
+  };
+  const calculateTaskStatus = status => {
+    const totalTask = tasks.length;
+    const taskCount = tasks.filter(item => item?.status === status.length);
+    const percentage = ((totalTask / taskCount) * 100).toFixed(2);
+  };
   return (
     <View style={defaultScreenStyle.container}>
       <ScrollView>
@@ -19,7 +26,11 @@ const Dashboard = () => {
             justifyContent: 'center',
           }}>
           {taskStatus.map(item => (
-            <TasksStausCard item={item} key={item.id} />
+            <TasksStausCard
+              value={countTaskStatus(item.status)}
+              item={item}
+              key={item.id}
+            />
           ))}
         </View>
         <SectionTitle title={'Project Statistics'} />
@@ -30,10 +41,22 @@ const Dashboard = () => {
             width={380}
             height={350}
             data={[
-              {x: 'In Review', y: 15},
-              {x: 'In Progress', y: 50},
-              {x: 'Complated', y: 25},
-              {x: 'On Hold', y: 10},
+              {
+                x: calculateTaskStatus(statusType.INPROGRESS),
+                y: calculateTaskStatus(statusType.INPROGRESS),
+              },
+              {
+                x: calculateTaskStatus(statusType.INREVIEW),
+                y: calculateTaskStatus(statusType.INREVIEW),
+              },
+              {
+                x: calculateTaskStatus(statusType.COMPLETED),
+                y: calculateTaskStatus(statusType.COMPLETED),
+              },
+              {
+                x: calculateTaskStatus(statusType.ONHOLD),
+                y: calculateTaskStatus(statusType.ONHOLD),
+              },
             ]}
             theme={VictoryTheme.clean}
           />
