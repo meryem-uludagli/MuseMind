@@ -5,22 +5,22 @@ import Button from '../../components/ui/button';
 import Input from '../../components/ui/input';
 import {useDispatch} from 'react-redux';
 import {addNewTask} from '../../store/actions/tasksActions';
-import {statusTypes} from '../../utils/constants';
 
-const AddTask = () => {
-  const [title, setTitle] = useState('');
-  const [date, setDate] = useState('');
-  const [status, setStatus] = useState('');
+const UpdateTask = ({route}) => {
+  const task = route.params.task;
+  const [title, setTitle] = useState(task.title);
+  const [date, setDate] = useState(task.date);
+  const [status, setStatus] = useState(task.status);
   const dispatch = useDispatch();
   const saveTask = () => {
-    const task = {
-      id: Date.now(),
+    const form = {
+      id: task.id,
       title: title,
       status: status,
       date: date,
     };
 
-    dispatch(addNewTask(task));
+    dispatch(UpdateTask(form));
   };
   return (
     <View style={defaultScreenStyle.container}>
@@ -42,9 +42,9 @@ const AddTask = () => {
         placeholder="Please set status"
         title="Task Status"
       />
-      <Button onPress={() => saveTask()} title="Kaydet" status="success" />
+      <Button onPress={() => saveTask()} title="Update" status="warning" />
     </View>
   );
 };
 
-export default AddTask;
+export default UpdateTask;
