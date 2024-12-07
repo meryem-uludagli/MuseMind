@@ -6,13 +6,13 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import {themeColors} from '../../theme/colors';
+import {ThemeColors, themeColors} from '../../theme/colors';
 import {Calendar, Edit, Trash} from 'iconsax-react-native';
 import {setColors} from '../../utils/functions';
 import {useDispatch} from 'react-redux';
-import {deleteTask} from '../../store/actions/taskActions';
 import {useNavigation} from '@react-navigation/native';
 import {UPDATETASK} from '../../utils/routes';
+import {deleteTask} from '../../store/actions/tasksActions';
 
 const TaskItem = ({item}) => {
   const dispatch = useDispatch();
@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
     width: '95%',
     height: 150,
     margin: 10,
-    borderColor: themeColors.black,
+    borderColor: ThemeColors.black,
     borderWidth: 1,
     elevation: 7,
     flexDirection: 'column',
@@ -91,7 +91,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   statusContainer: {
-    borderColor: themeColors.black,
+    borderColor: ThemeColors.black,
     borderWidth: 1,
     width: '45%',
     justifyContent: 'center',
@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
   },
   status: {
     fontSize: 18,
-    color: themeColors.darkGray,
+    color: ThemeColors.darkGray,
     marginBottom: 5,
     fontWeight: 'bold',
   },
@@ -114,6 +114,6 @@ const styles = StyleSheet.create({
   },
   date: {
     fontSize: 17,
-    color: themeColors.black,
+    color: ThemeColors.black,
   },
 });

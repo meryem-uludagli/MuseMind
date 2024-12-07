@@ -3,7 +3,7 @@ import {statusTypes} from './constants';
 
 const setColors = status => {
   switch (status) {
-    case statusTypes.COMPLATED:
+    case statusTypes.COMPLETED:
       return ThemeColors.green;
 
     case statusTypes.INPROGRESS:

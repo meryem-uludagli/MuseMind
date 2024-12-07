@@ -1,5 +1,5 @@
 const statusTypes = {
-  COMPLATED: 'Complated',
+  COMPLETED: 'Complated',
   ONHOLD: 'On Hold',
   INREVIEW: 'In Review',
   INPROGRESS: 'In Progress',

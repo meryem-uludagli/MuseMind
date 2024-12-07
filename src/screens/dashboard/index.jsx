@@ -4,6 +4,7 @@ import SectionTitle from '../../components/ui/sectionTitle';
 import TasksStausCard from '../../components/dashboard/tasksStausCard';
 import {defaultScreenStyle} from '../../styles/defaultScreenStyle';
 import {VictoryPie, VictoryTheme} from 'victory-native';
+import {statusTypes} from '../../utils/constants';
 
 const Dashboard = () => {
   const {taskStatus, tasks} = useSelector(state => state?.tasks);
@@ -43,20 +44,20 @@ const Dashboard = () => {
             height={350}
             data={[
               {
-                x: calculateTaskStatus(statusType.INPROGRESS),
-                y: calculateTaskStatus(statusType.INPROGRESS),
+                x: calculateTaskStatus(statusTypes.INPROGRESS),
+                y: calculateTaskStatus(statusTypes.INPROGRESS),
               },
               {
-                x: calculateTaskStatus(statusType.INREVIEW),
-                y: calculateTaskStatus(statusType.INREVIEW),
+                x: calculateTaskStatus(statusTypes.INREVIEW),
+                y: calculateTaskStatus(statusTypes.INREVIEW),
               },
               {
-                x: calculateTaskStatus(statusType.COMPLETED),
-                y: calculateTaskStatus(statusType.COMPLETED),
+                x: calculateTaskStatus(statusTypes.COMPLETED),
+                y: calculateTaskStatus(statusTypes.COMPLETED),
               },
               {
-                x: calculateTaskStatus(statusType.ONHOLD),
-                y: calculateTaskStatus(statusType.ONHOLD),
+                x: calculateTaskStatus(statusTypes.ONHOLD),
+                y: calculateTaskStatus(statusTypes.ONHOLD),
               },
             ]}
             theme={VictoryTheme.clean}
